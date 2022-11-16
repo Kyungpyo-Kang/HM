@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    
+    
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <title>Hyundai Motors Design Assistance</title>
+  </head>
+
+  <body style="background-color:white;">
+    <header class="banner">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom:0px;">
+            <a href="{%url 'index' %}">
+                <img style="width:150px;height:auto;float:left;cursor:pointer;" src="../static/img/front/Hyundai_Text_Logo.png">
+            </a>
+            <div class="container-fluid" style="float:left;">
+                <a class="navbar-brand" style="font-size:23px;font-weight:bolder;color:white;cursor: pointer;" href="{%url 'index' %}">Design Assistant Program</a>
+            </div>
+        </nav>
+    </header>
+    
+    <br>
+    <div id="wrapper" style="width: 100%; height: 70%; float: leftright; margin-right: 30%;">
+        <div class="input" style="float: left; margin-left: 2%; width: 15%; height: 100%;">
+            <div id="imgUploadDIV" class="card mb-3" style="float:left; width:100%; height: 100%; margin-left: 2%;">
+                <div class="card-header text-white bg-secondary mb-3" style="text-align: center;font-weight: bolder;font-size: 15pt;">Input 이미지 1
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 20px;text-align:center;">Target Image</h5>
+                    <div class="container imgUp">
+                        <div style="text-align:center;">
+                            <div class="imagePreview">
+                                <img id="uploaded_content_img" style="width:200px;height:200px;max-width:100%;max-height:100%;" src="{{ args.content_image.url }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="imgUploadDIV" class="card mb-3" style="float:left; width:100%; height: 20%;">
+                <div class="card-header text-white bg-secondary mb-3" style="text-align: center;font-weight: bolder;font-size: 15pt;">Input 이미지 2
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 20px;text-align:center;">Reference Image</h5>
+                    <div class="container imgUp">
+                        <div style="text-align:center;">
+                            <div class="imagePreview">
+                                <img id="uploaded_style_img" style="width:200px;height:200px;max-width:100%;max-height:100%;" src="{{ args.style_image.url }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="icon" style="text-align:center; margin-left: 20%;">
+            <img style="width:40px;height:auto;float:left; margin-top: 25%; margin-left: 40pt; margin-right: 30pt;" src="../static/img/front/Result_Icon.png"/>
+        </div>
+
+        <div id="imgUploadDIV" class="card mb-3" style="float:left; width: 30%; margin-left: 40pt; margin-top: 3%;">
+            <div class="card-header text-white bg-secondary mb-3" style="text-align: center;font-weight: bolder;font-size: 15pt;">결과 이미지
+            </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="margin-bottom: 20px;text-align:center;">Generated Image</h5>
+                    <div class="imagePreview" style="text-align: center;">
+                        <img id="uploaded_img_id" style="width:450px;height:450px;max-width:100%;max-height:100%;" src="{{ args.output_image.url }}">
+                    </div>
+                </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto" style="max-width:20%;max-height:100%;">
+            <a class="btn btn-warning" href="{%url 'history' %}" role="button" style="margin-top: 30%;">History 조회하기</a>
+            <a class="btn btn-dark" href="{%url 'transfer' %}" role="button">다른 이미지 합성하기</a>
+        </div>                    
+        
+    </div>
+
+
+<script src="../static/js/main_script.js"></script>    
+</body>
+
+</html>

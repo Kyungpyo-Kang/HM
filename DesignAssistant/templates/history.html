@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+        //최상단 체크박스 클릭
+        $("#checkall").click(function(){
+            //클릭되었으면
+            if($("#checkall").prop("checked")){
+                //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+                $("input[name=chk]").prop("checked",true);
+                //클릭이 안되있으면
+            }else{
+                //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+                $("input[name=chk]").prop("checked",false);
+            }
+        })
+    })
+    </script>
+    <style>
+        h1 {
+            text-align: center;
+            color: #ffffff;
+          }
+        table {
+            font-size: 10pt;
+            margin-left:auto; 
+            margin-right:auto;
+            text-align: center;
+        }
+      </style>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <title>Hyundai Motors Design Assistance</title>
+  </head>
+  <body style="background-color:white;">
+    <header class="banner">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom:0px;">
+            <a href="{%url 'index' %}">
+                <img style="width:150px;height:auto;float:left;cursor:pointer;" src="../static/img/front/Hyundai_Text_Logo.png">
+            </a>
+            <div class="container-fluid" style="float:left;">
+                <a class="navbar-brand" style="font-size:23px;font-weight:bolder;color:white;cursor: pointer;" href="{%url 'index' %}">Design Assistant Program</a>
+            </div>
+        </nav>
+    </header>
+
+    <br>
+    
+    <div class="container">
+      <div class="h1">
+        <div class="alert alert-warning" role="alert">
+          <b>History</b>
+        </div>
+      </div>
+      <br>
+      <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'setseq'%}">새로고침</a>
+      <br>
+      <table class="table">
+        <thead>
+            <tr>
+            <th scope="col"><input type="checkbox" id="checkall"/></th>
+            <th scope="col">#</th>
+            <th scope="col">Target Image</th>
+            <th scope="col">Reference Image</th>
+            <th scope="col">Generated Image</th>
+            <th scope="col">Target Image 색상 중심</th>
+            <th scope="col">자연 이미지 + 패턴 이미지</th>
+            <th scope="col">Weight 값</th>
+            <th scope="col">Uploaded Time</th>
+            </tr>
+        </thead>
+        <form action="{%url 'delete'%}">
+        <input type="hidden" name='flag' value=1>
+        {% for history in history.all %}
+        <tbody>
+            <tr>
+            <td><input type="checkbox" name="chk" value='{{history.id}}'/></td>
+            <th scope="row">{{history.id}}</th>
+            <td>
+                <img style="width:50px;height:50px;" src="{{history.content_image.url}}"/>                
+            </td>
+            <td>
+                <img style="width:50px;height:50px;" src="{{history.style_image.url}}"/>                
+            </td>
+            <td>
+                <img style="width:50px;height:50px;" src="{{history.output_image.url}}"/>                
+            </td>
+            <td>{{history.preserve_color}}</td>
+            <td>{{history.nature_pattern}}</td>
+            <td>{{history.alpha}}</td>
+            <td>{{history.upload_time|date:'Y-m-d H:i:s'}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+        <br><br>
+        <button type="submit" class="btn btn-dark">History 삭제</button>
+        <a class="btn btn-dark" href="{%url 'transfer' %}" role="button">이미지 합성하기</a>
+        </form>
+    </div>
+  </body>
+</html>

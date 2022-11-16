@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    
+    
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <title>Hyundai Motors Design Assistance</title>
+  </head>
+
+  <body style="background-color:white;">
+        <header class="banner">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom:0px;">
+                <a href="{%url 'index' %}">
+                    <img style="width:150px;height:auto;float:left;cursor:pointer;" src="../static/img/front/Hyundai_Text_Logo.png">
+                </a>
+                <div class="container-fluid" style="float:left;">
+                    <a class="navbar-brand" style="font-size:23px;font-weight:bolder;color:white;cursor: pointer;" href="{%url 'index' %}" onclick="sessionClear()">Design Assistant Program</a>
+                </div>
+            </nav>
+        </header>
+
+        <br>
+        <div id="wrapper" style="float: left; width: 100%; height: 70%;">
+            <div id="input" style="margin-left: 15pt; width:100%; height: 60%;">   
+                <form method="POST" action= "{%url 'result' %}" enctype="multipart/form-data" name="contents_form" id="contents_form_id">
+                    <div class="form-group" style="width: 100%;">
+                        <div id="imgUploadDIV" class="card mb-3" style="float:left; width:25%;">
+                            <div class="card-header text-white bg-secondary mb-3" style="text-align: center;font-weight: bolder;font-size: 15pt;">이미지 업로드
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="margin-bottom: 20px;text-align:center;">Target Image</h5>
+                                <h6 class="card-subtitle text-muted" style="margin-bottom: 30px;text-align:center;">원하는 이미지를 업로드 해주세요.</h6>
+                                <div class="container imgUp">
+                                    <div style="text-align:center;">
+                                        <div class="imagePreview">
+                                            <img id="uploaded_content_img" name= "uploaded_content_img" style="width:300px;height:300px;max-width:100%;max-height:100%;" src="../static/img/front/no_image.jpg">
+                                        </div>
+                                        <label id="upload_btn_label_id" class="btn btn-secondary" style="width :300px;max-width:100%;max-height:100%;display:inline-block;">
+                                            Upload
+                                            <input type="file" id="content_image_upload" class="uploadFile img" value="Upload Photo" name="content_image" style="width: 0px;height: 0px;" onchange="readURL(this);">
+                                            <input type="hidden" id="content_image_selected" class="selected img" name="content_selected" value="">
+                                        </label>
+                                        <br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="icon" style="text-align:center;">
+                            <img style="width:100px;height:auto;float:left; margin-top: 15%;" src="../static/img/front/Merge_Icon.png"/>
+                        </div>
+                        
+                        <div id="imgUploadDIV" class="card mb-3" style="float:left; width:25%;">
+                            <div class="card-header text-white bg-secondary mb-3" style="text-align: center;font-weight: bolder;font-size: 15pt;">이미지 업로드</div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="margin-bottom: 20px;text-align:center;">Reference Image</h5>
+                                <h6 class="card-subtitle text-muted" style="margin-bottom: 30px;text-align:center;">원하는 이미지를 업로드 해주세요.</h6>
+                                <div class="container imgUp">
+                                    <div style="text-align:center;">
+                                        <div class="imagePreview" style="display:inline-block;">
+                                            <img id="uploaded_style_img" name= "uploaded_style_img" style="width:300px;height:300px;max-width:100%;max-height:100%;" src="../static/img/front/no_image.jpg">
+                                        </div>
+                                        <label id="upload_btn_label_id" class="btn btn-secondary" style="width :300px;max-width:100%;max-height:100%;display:inline-block;">
+                                            Upload
+                                            <input type="file" id="style_image_upload" class="uploadFile img" value="Upload Photo" name="style_image" style="width: 0px;height: 0px;" onchange="readURL(this)">
+                                            <input type="hidden" id="style_image_selected" class="selected img" name="style_selected" value="">
+                                        </label>
+                                        <br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+
+                        <div id="icon" style="text-align:center;">
+                            <img style="width:40px;height:auto;float:left; margin-top: 17%; margin-left: 60pt; margin-right: 30pt;" src="../static/img/front/Result_Icon.png"/>
+                        </div>
+                        
+                        <div class="input-group mb-3" style="width: 30%;">
+                            <div class="form-check" style="margin-left: 10%; margin-top: 40%; width: 100%;">
+                                <input class="form-check-input" type="checkbox" value="1" id="color_checkbox" name="color_checkbox">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    Target Image 색상 중심
+                                </label>
+                            </div>
+                            <div class="form-check" style="margin-left: 10%; width: 100%;">
+                                <input class="form-check-input" type="checkbox" value="1" id="image_type_checkbox" name="image_type_checkbox">
+                                <label class="form-check-label" for="flexCheckChecked">
+                                    자연이미지 + 패턴이미지
+                                </label>
+                            </div>
+                            <br>
+                            <input type="text" class="form-control" style="width: 50%; margin-left: 10%; max-width: 59.5%; margin-top: 10pt;" id="weight" name="weight" placeholder="Weight값 입력 (필수, 0~1 사이의 실수)" required/>
+                            <br>
+                            <div id="submit" style="width: 60%; margin-left: 10%; margin-top: 10pt;">
+                                <input type="submit" class="btn btn-dark" style="display: block;width: 300px; max-width:100%;" value="결과보기"/>
+                                <a class="btn btn-warning" href="{%url 'history' %}" role="button" style="margin-top: 10pt; display: block;width: 300px; max-width:100%;">History 조회하기</a>
+                                <a class="btn btn-success" href="{%url 'transfer' %}" role="button" style="margin-top: 10pt; display: block;width: 300px; max-width:100%;" onclick="sessionClear()">이미지 새로고침</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+                <div class="dropdown" style="float: left; width: 70%;">
+                    <form id="content_db" method="POST" action="{%url 'get_images' %}">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; float: left; margin-left: 5%;" onclick="isContent();">
+                        DB에서 선택
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><button class="btn btn-secondary" type="submit" value="1" name="pattern_image">패턴이미지</button></li>
+                            <li><button class="btn btn-secondary" type="submit" value="2" name="nature_image">자연이미지</button></li>
+                        </ul>
+                    </form>
+                    <form id="style_db" method="POST" action="{%url 'get_images' %}">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; margin-left: 18%;" onclick="isStyle();">
+                        DB에서 선택
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><button class="btn btn-secondary" type="submit" value="1" name="pattern_image">패턴이미지</button></li>
+                            <li><button class="btn btn-secondary" type="submit" value="2" name="nature_image">자연이미지</button></li>
+                        </ul>
+                    </form>    
+                </div>
+                <div style="float: left; width: 40%; height: 500px; overflow-y: scroll; margin-left: 8%;">
+                    <div class="card-header text-white bg-secondary mb-3" style="text-align: center; margin-top:5%; padding-top: 1.1%; font-weight: bolder; font-size: 15pt; height: 50px;">이미지 리스트</div>
+                    {% for image in info.real_images %}
+                        <label for="check{{forloop.counter}}">
+                            <input id="check{{forloop.counter}}" name="selected-item" type="checkbox" class="checkbox" style="position:relative; margin-top:8px; margin-left:8px;" value={{forloop.counter0}} onclick="checkOnlyOne(this);">
+                            <img id="image{{forloop.counter}}" src="{{ image }}" hspace="0.5%" vspace="0.5%" style="border: 2px solid black; width: 128px; height: 128px;" onclick="getSource(this.id);">
+                        </label>
+                    {% endfor %}
+                        
+
+                </div>
+            </div>
+        </div>
+    
+    
+<script src="../static/js/main_script.js"></script>    
+</body>
+
+</html>
