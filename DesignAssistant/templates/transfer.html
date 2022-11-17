@@ -104,8 +104,8 @@
                             <br>
                             <div id="submit" style="width: 60%; margin-left: 10%; margin-top: 10pt;">
                                 <input type="submit" class="btn btn-dark" style="display: block;width: 300px; max-width:100%;" value="결과보기"/>
-                                <a class="btn btn-warning" href="{%url 'history' %}" role="button" style="margin-top: 10pt; display: block;width: 300px; max-width:100%;">History 조회하기</a>
-                                <a class="btn btn-success" href="{%url 'transfer' %}" role="button" style="margin-top: 10pt; display: block;width: 300px; max-width:100%;" onclick="sessionClear()">이미지 새로고침</a>
+                                <a class="btn btn-dark" href="{%url 'history' %}" role="button" style="margin-top: 10pt; display: block;width: 300px; max-width:100%;">History 조회하기</a>
+                                <a class="btn btn-dark" href="{%url 'transfer' %}" role="button" style="margin-top: 10pt; display: block;width: 300px; max-width:100%;" onclick="sessionClear()">이미지 새로고침</a>
                             </div>
                         </div>
                     </div>
@@ -114,21 +114,21 @@
 
                 <div class="dropdown" style="float: left; width: 70%;">
                     <form id="content_db" method="POST" action="{%url 'get_images' %}">{% csrf_token %}
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; float: left; margin-left: 5%;" onclick="isContent();">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; float: left; margin-left: 5.25%;" onclick="isContent();">
                         DB에서 선택
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><button class="btn btn-secondary" type="submit" value="1" name="pattern_image">패턴이미지</button></li>
-                            <li><button class="btn btn-secondary" type="submit" value="2" name="nature_image">자연이미지</button></li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="text-align: center;">
+                            <li><button class="dropdown-item" type="submit" value="1" name="pattern_image">패턴이미지</button></li>
+                            <li><button class="dropdown-item" type="submit" value="2" name="nature_image">자연이미지</button></li>
                         </ul>
                     </form>
                     <form id="style_db" method="POST" action="{%url 'get_images' %}">{% csrf_token %}
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; margin-left: 18%;" onclick="isStyle();">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; margin-left: 18.5%;" onclick="isStyle();">
                         DB에서 선택
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><button class="btn btn-secondary" type="submit" value="1" name="pattern_image">패턴이미지</button></li>
-                            <li><button class="btn btn-secondary" type="submit" value="2" name="nature_image">자연이미지</button></li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="text-align: center;">
+                            <li><button class="dropdown-item" type="submit" value="1" name="pattern_image">패턴이미지</button></li>
+                            <li><button class="dropdown-item" type="submit" value="2" name="nature_image">자연이미지</button></li>
                         </ul>
                     </form>    
                 </div>
