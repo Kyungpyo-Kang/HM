@@ -9,7 +9,7 @@ SECRET_KEY = "django-insecure-!exn(*@^y=oudhnatz@76lha5eu@0(^1-&x2)jpjydh%9$=1=c
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    ".ap-northeast-2.compute.amazonaws.com"
+    ".us-west-1.compute.amazonaws.com"
 ]
 
 
