@@ -112,9 +112,9 @@
                 </form>
 
 
-                <div class="dropdown" style="float: left; width: 70%;">
-                    <form id="content_db" method="POST" action="{%url 'get_images' %}">{% csrf_token %}
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; float: left; margin-left: 5.25%;" onclick="isContent();">
+                <div class="dropdown" style="float: left; width: 100%;">
+                    <form id="content_db" method="POST" action="{%url 'get_images' %}" style="width: 25%; float: left; text-align: center;">{% csrf_token %}
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%;display:inline-block;" onclick="isContent();">
                         DB에서 선택
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="text-align: center;">
@@ -122,8 +122,8 @@
                             <li><button class="dropdown-item" type="submit" value="2" name="nature_image">자연이미지</button></li>
                         </ul>
                     </form>
-                    <form id="style_db" method="POST" action="{%url 'get_images' %}">{% csrf_token %}
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%; margin-left: 18.5%;" onclick="isStyle();">
+                    <form id="style_db" method="POST" action="{%url 'get_images' %}" style="width: 25%; float: left; text-align: center; margin-left: 100px;">{% csrf_token %}
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width :300px;max-width:100%;max-height:100%;display:inline-block;" onclick="isStyle();">
                         DB에서 선택
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="text-align: center;">
