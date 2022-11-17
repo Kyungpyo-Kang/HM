@@ -80,7 +80,7 @@
             <th scope="col">Uploaded Time</th>
             </tr>
         </thead>
-        <form action="{%url 'delete'%}">
+        <form action="{%url 'delete'%}">{% csrf_token %}
         <input type="hidden" name='flag' value=1>
         {% for history in history.all %}
         <tbody>
