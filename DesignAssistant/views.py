@@ -75,10 +75,10 @@ def result_view(request):
     
 
     if int(is_nature):
-        generated_result = AdaIN.main(vgg_path, decoder_model_pattern_path, content_image, style_image, alpha=1.0, interpolation_weights=None, preserve_color = int(preserve_color))
+        generated_result = AdaIN.main(vgg_path, decoder_model_nature_path, content_image, style_image, alpha=1.0, interpolation_weights=None, preserve_color = int(preserve_color))
 
     else:
-        generated_result = AdaIN.main(vgg_path, decoder_model_nature_path, content_image, style_image, alpha=1.0, interpolation_weights=None, preserve_color = int(preserve_color))
+        generated_result = AdaIN.main(vgg_path, decoder_model_pattern_path, content_image, style_image, alpha=1.0, interpolation_weights=None, preserve_color = int(preserve_color))
 
     output = generated_result['output_image']
     content_image = generated_result['content_image']
@@ -177,11 +177,11 @@ def get_images(request):
         pass
 
     if is_pattern:
-        path = './DesignAssistant/static/img/pattern_images/'
-        path_mid = 'pattern_images/'
+        path = './DesignAssistant/static/img/sample_pattern/'
+        path_mid = 'sample_pattern/'
     else:
-        path = './DesignAssistant/static/img/nature_images/'
-        path_mid = 'nature_images/'
+        path = './DesignAssistant/static/img/sample_nature/'
+        path_mid = 'sample_nature/'
 
     images = getImages(path)
     file_names = [i.split('/')[-1] for i in images]
@@ -193,6 +193,7 @@ def get_images(request):
     
 
     return render(request, 'transfer.html', {'info' : info})
+
 # 이미지 경로 불러오는 메소드
 def getImages(path: str) : 
     image_list: list = os.listdir(path) # 입력된 path 내의 모든 '파일명' 호출 : 출력 예시) ['0.jpg', '1.jpg', ...]
