@@ -72,7 +72,7 @@ def style_transfer(vgg, decoder, content, style, alpha=1.0,
     return decoder(feat)
 
 
-def main(vgg_path, decoder_path, content, style, alpha=1.0, interpolation_weights=None, preserve_color = True):
+def main(vgg_path, decoder_path, content, style, alpha, interpolation_weights=None, preserve_color = True):
 
 
     do_interpolation = False

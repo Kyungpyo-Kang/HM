@@ -76,7 +76,8 @@
                                             <input type="file" id="style_image_upload" class="uploadFile img" value="Upload Photo" name="style_image" style="width: 0px;height: 0px;" onchange="readURL(this)">
                                             <input type="hidden" id="style_image_selected" class="selected img" name="style_selected" value="">
                                         </label>
-                                        <br><br>
+                                        <h6 class="card-subtitle text-muted" style="margin-top: 8px; text-align:center; font-size: 10pt;">(패턴 이미지를 권장합니다.)</h6>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -97,15 +98,20 @@
                             <div class="form-check" style="margin-left: 10%; width: 100%;">
                                 <div class="help-tip">
                                     <input class="form-check-input" type="checkbox" value="1" id="image_type_checkbox" name="image_type_checkbox">
-                                    <label class="form-check-label" for="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckChecked" style="margin-left: -2.8%;">
                                         자연이미지 + 패턴이미지
                                     </label>    
-                                    <p>자연이미지는 <b>Target Image</b>에만 사용할 것을 권장합니다.</p>
+                                    <p style="margin-left: -6%; text-align: center; width: 300px;"><b>Reference Image</b>는 <b>패턴이미지</b>를 권장합니다.</p>
                                 </div>
-                                
                             </div>
-                            <br>
-                            <input type="text" class="form-control" style="width: 50%; margin-left: 10%; max-width: 59.5%; margin-top: 10pt;" id="weight" name="weight" placeholder="Weight값 입력 (필수, 0~1 사이의 실수)" required/>
+                            
+                            <div class="form-check" style="width: 100%;">
+                                <div class="help-tip">
+                                    <input type="text" class="form-control" style="margin-left: 5%; width: 300px;" id="weight" name="weight" placeholder="Weight값 입력 (필수, 0~1 사이의 실수)" required/>
+                                    <p style="margin-left: 5%; text-align: center; width: 300px;">0에 가까울수록 <b>Target Image</b>의 특성이 반영됩니다.</p>
+                                </div>
+                            </div>
+
                             <br>
                             <div id="submit" style="width: 60%; margin-left: 10%; margin-top: 10pt;">
                                 <input type="submit" class="btn btn-dark" style="display: block;width: 300px; max-width:100%;" value="결과보기"/>

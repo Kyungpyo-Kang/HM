@@ -53,7 +53,7 @@ def result_view(request):
     except:
         is_nature = '0'
 
-    alpha = request.POST['weight']
+    alpha = float(request.POST['weight'])
 
     PATH = 'HM/model_made/'
     vgg_path = PATH + 'vgg_normalised.pth'
