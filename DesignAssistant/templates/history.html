@@ -64,6 +64,7 @@
         </div>
       </div>
       <br>
+      <form action="{%url 'delete'%}">{% csrf_token %}
       <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'setseq'%}">새로고침</a>
       <button type="submit" class="btn btn-outline-dark">History 삭제</button>
       <a class="btn btn-outline-dark" href="{%url 'transfer' %}" role="button">이미지 합성하기</a>
@@ -81,7 +82,7 @@
             <th scope="col">Weight 값</th>
             </tr>
         </thead>
-        <form action="{%url 'delete'%}">{% csrf_token %}
+        
         <input type="hidden" name='flag' value=1>
         {% for history in history.all %}
         <tbody>
