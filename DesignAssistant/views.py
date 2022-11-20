@@ -75,10 +75,10 @@ def result_view(request):
     
 
     if int(is_nature):
-        generated_result = AdaIN.main(vgg_path, decoder_model_nature_path, content_image, style_image, alpha=1.0, interpolation_weights=None, preserve_color = int(preserve_color))
+        generated_result = AdaIN.main(vgg_path, decoder_model_nature_path, content_image, style_image, alpha=alpha, interpolation_weights=None, preserve_color = int(preserve_color))
 
     else:
-        generated_result = AdaIN.main(vgg_path, decoder_model_pattern_path, content_image, style_image, alpha=1.0, interpolation_weights=None, preserve_color = int(preserve_color))
+        generated_result = AdaIN.main(vgg_path, decoder_model_pattern_path, content_image, style_image, alpha=alpha, interpolation_weights=None, preserve_color = int(preserve_color))
 
     output = generated_result['output_image']
     content_image = generated_result['content_image']
