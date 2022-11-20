@@ -177,7 +177,7 @@ def get_images(request):
         path = './DesignAssistant/static/img/sample_nature/'
         path_mid = 'sample_nature/'
 
-    images = getImages(path)
+    images = getImages(path, is_pattern)
     file_names = [i.split('/')[-1] for i in images]
     real_images = ['../static/img/'+path_mid+i for i in file_names]
     
@@ -189,11 +189,18 @@ def get_images(request):
     return render(request, 'transfer.html', {'info' : info})
 
 # 이미지 경로 불러오는 메소드
-def getImages(path: str) : 
-    image_list: list = os.listdir(path) # 입력된 path 내의 모든 '파일명' 호출 : 출력 예시) ['0.jpg', '1.jpg', ...]
+def getImages(path: str, is_pattern) : 
+    #image_list: list = os.listdir(path) # 입력된 path 내의 모든 '파일명' 호출 : 출력 예시) ['0.jpg', '1.jpg', ...]
     #random_images: list = random.sample(image_list, 30) # 랜덤하게 30개만 추출
-    sorted_list = sorted(image_list)
-    image_path_list: list = getFullPath(path, sorted_list) # 파일명만 있기 때문에 getFullPath 메소드로 경로 생성
+    image_list = []
+
+    for i in range(1,31):
+        if is_pattern:
+            image_list.append('pattern_%s.jpg'%(i))
+        else:
+            image_list.append('nature_%s.jpg'%(i))
+
+    image_path_list: list = getFullPath(path, image_list) # 파일명만 있기 때문에 getFullPath 메소드로 경로 생성
     return image_path_list
 
 # 이미지 경로 생성 메소드
