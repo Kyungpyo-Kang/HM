@@ -8,7 +8,7 @@ import os, sys
 import torch
 import AdaIN
 import random
-import settings
+from django.conf import settings
 
 def setseq(request):
     history_list = History.objects.all().order_by('id')
