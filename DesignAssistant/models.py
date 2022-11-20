@@ -11,7 +11,7 @@ class History(models.Model):
     preserve_color = models.BooleanField(default = True)
     nature_pattern = models.BooleanField(default = True)
     alpha = models.FloatField(default = 1)
-    upload_time = models.DateTimeField(default = datetime.datetime.now())
+    
 
     def delete_files(self):
         os.remove(os.path.join(settings.MEDIA_ROOT, self.content_image.path))
