@@ -13,8 +13,11 @@ class History(models.Model):
     alpha = models.FloatField(default = 1)
     upload_time = models.DateTimeField(default = datetime.datetime.now())
 
-    def delete(self, *args, **kwargs):
-        super(History, self).delete(*args, **kwargs)
+    def delete_files(self):
         os.remove(os.path.join(settings.MEDIA_ROOT, self.content_image.path))
         os.remove(os.path.join(settings.MEDIA_ROOT, self.style_image.path))
         os.remove(os.path.join(settings.MEDIA_ROOT, self.output_image.path))
+
+    def delete(self, *args, **kwargs):
+        super(History, self).delete(*args, **kwargs)
+        

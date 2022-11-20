@@ -142,28 +142,11 @@ def delete_history(request):
     check_list = request.GET.getlist('chk')
 
     history = History.objects.filter(id__in=check_list)
+    history.delete_files()
     history.delete()
-    
     return redirect('history')
 
 
-def delete_history(request):
-    
-    check_list = request.GET.getlist('chk')
-
-    history = History.objects.filter(id__in=check_list)
-    history.delete()
-    
-    return redirect('history')
-
-def delete_history(request):
-    
-    check_list = request.GET.getlist('chk')
-
-    history = History.objects.filter(id__in=check_list)
-    history.delete()
-    
-    return redirect('history')
 
 ###### Static Images Section ######
 def get_images(request):
