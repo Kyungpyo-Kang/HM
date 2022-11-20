@@ -80,6 +80,7 @@
         <div class="d-grid gap-2 col-6 mx-auto" style="max-width:20%;max-height:100%;">
             <a class="btn btn-dark" href="{%url 'history' %}" role="button" style="margin-top: 30%;">History 조회하기</a>
             <a class="btn btn-dark" href="{%url 'transfer' %}" role="button">다른 이미지 합성하기</a>
+            <a class="btn btn-dark" href="{{ args.output_image.url }}" download="result_image">결과이미지 다운받기</a>
         </div>                    
         
     </div>
