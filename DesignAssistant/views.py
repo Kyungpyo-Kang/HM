@@ -192,7 +192,8 @@ def get_images(request):
 def getImages(path: str) : 
     image_list: list = os.listdir(path) # 입력된 path 내의 모든 '파일명' 호출 : 출력 예시) ['0.jpg', '1.jpg', ...]
     #random_images: list = random.sample(image_list, 30) # 랜덤하게 30개만 추출
-    image_path_list: list = getFullPath(path, image_list) # 파일명만 있기 때문에 getFullPath 메소드로 경로 생성
+    sorted_list = sorted(image_list)
+    image_path_list: list = getFullPath(path, sorted_list) # 파일명만 있기 때문에 getFullPath 메소드로 경로 생성
     return image_path_list
 
 # 이미지 경로 생성 메소드
