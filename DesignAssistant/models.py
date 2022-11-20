@@ -11,12 +11,7 @@ class History(models.Model):
     preserve_color = models.BooleanField(default = True)
     nature_pattern = models.BooleanField(default = True)
     alpha = models.FloatField(default = 1)
-    
-
-    def delete_files(self):
-        os.remove(os.path.join(settings.MEDIA_ROOT, self.content_image.path))
-        os.remove(os.path.join(settings.MEDIA_ROOT, self.style_image.path))
-        os.remove(os.path.join(settings.MEDIA_ROOT, self.output_image.path))
+        
 
     def delete(self, *args, **kwargs):
         super(History, self).delete(*args, **kwargs)
