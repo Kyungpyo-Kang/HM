@@ -163,7 +163,6 @@ def delete_files(item):
 def get_images(request):
 
     is_pattern = 0
-    print(request.POST)
 
     try:
         is_pattern = int(request.POST['pattern_image'])
@@ -199,7 +198,7 @@ def getImages(path: str, is_pattern) :
             image_list.append('pattern_%s.jpg'%(i))
         else:
             image_list.append('nature_%s.jpg'%(i))
-
+    print(image_list)
     image_path_list: list = getFullPath(path, image_list) # 파일명만 있기 때문에 getFullPath 메소드로 경로 생성
     return image_path_list
 
