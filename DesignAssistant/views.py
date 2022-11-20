@@ -8,6 +8,7 @@ import os, sys
 import torch
 import AdaIN
 import random
+import settings
 
 def setseq(request):
     history_list = History.objects.all().order_by('id')
@@ -142,7 +143,7 @@ def delete_history(request):
     check_list = request.GET.getlist('chk')
 
     history = History.objects.filter(id__in=check_list)
-    
+
     # directory 내 파일 삭제
     for history in history.all():
         delete_files(history)
