@@ -143,10 +143,11 @@ def delete_history(request):
     check_list = request.GET.getlist('chk')
 
     history = History.objects.filter(id__in=check_list)
-    
-    for history in history.all():
-        delete_files(history)
-    
+    try:
+        for history in history.all():
+            delete_files(history)
+    except:
+        pass
     history.delete()
     
     return redirect('history')
