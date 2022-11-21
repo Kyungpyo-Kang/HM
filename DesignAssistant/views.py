@@ -145,10 +145,12 @@ def delete_history(request):
     history = History.objects.filter(id__in=check_list)
     tmp = history.all()
     history.delete()
-
-    # directory 내 파일 삭제
-    for item in tmp:
-        delete_files(tmp)
+    try:
+        # directory 내 파일 삭제
+        for item in tmp:
+            delete_files(tmp)
+    except:
+        pass
 
     # DB 기록 삭제
     
