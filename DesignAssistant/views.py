@@ -143,22 +143,25 @@ def delete_history(request):
     check_list = request.GET.getlist('chk')
 
     history = History.objects.filter(id__in=check_list)
-    tmp_list = history.all()
+    
+    content_image = [i.content_image.path for i in history]
+    style_image = [i.style_image.path for i in history]
+    output_image = [i.output_image.path for i in history]
+
     history.delete()
 
+
     try:
-        for item in tmp_list:
-            delete_files(item)
+        for i,j,k in content_image, style_image, output_image:
+            os.remove(os.path.join(settings.MEDIA_ROOT, i))
+            os.remove(os.path.join(settings.MEDIA_ROOT, j))
+            os.remove(os.path.join(settings.MEDIA_ROOT, k))
+            
     except:
         pass
     
     
     return redirect('history')
-
-def delete_files(item):
-    os.remove(os.path.join(settings.MEDIA_ROOT, item.content_image.path))
-    os.remove(os.path.join(settings.MEDIA_ROOT, item.style_image.path))
-    os.remove(os.path.join(settings.MEDIA_ROOT, item.output_image.path))
 
 
 
