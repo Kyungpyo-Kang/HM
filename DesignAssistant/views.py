@@ -197,6 +197,8 @@ def get_images(request):
     file_names = [i.split('/')[-1] for i in images]
     real_images = ['../static/img/'+path_last+i for i in file_names]
     
+    real_images = random.sample(real_images, 30)
+
     info: dict = {
         'real_images' : real_images
     }
