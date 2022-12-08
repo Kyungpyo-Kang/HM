@@ -168,23 +168,34 @@ def delete_history(request):
 ###### Static Images Section ######
 def get_images(request):
 
+    pattern_category = ['black_white_patterns','figure_patterns','fractal_patterns',
+    'geometric_patterns','hexagon_patterns','line_patterns','patterns','patterns_2','patterns_3']
+
+    nature_category = ['animal_images','animal_skin_images','bee_images','bird_images','butterfly_images',
+    'crystal_images','dragonfly_images','eyes_images','flower_images','nature_images','reptile_images',
+    'spider_images','tree_images','wave_images']
+
     is_pattern = 0
 
     try:
-        is_pattern = int(request.POST['pattern_image'])
+        pattern_cate_idx = int(request.POST['pattern_image'])
+        is_pattern = 1
     except:
-        pass
+        nature_cate_idx = int(request.POST['nature_image'])
+
 
     if is_pattern:
-        path = './DesignAssistant/static/img/pattern_images/'
-        path_mid = 'pattern_images/'
+        path_mid = pattern_category[pattern_cate_idx-1]
+        path = './DesignAssistant/static/img/pattern_images_by_keywords/'+path_mid+'/'
+        path_last = 'pattern_images_by_keywords/'+path_mid+'/'
     else:
-        path = './DesignAssistant/static/img/nature_images/'
-        path_mid = 'nature_images/'
+        path_mid = nature_category[nature_cate_idx-1]
+        path = './DesignAssistant/static/img/nature_images_by_keywords/'+path_mid+'/'
+        path_last = 'nature_images_by_keywords/'+path_mid+'/'
 
     images = getImages(path)
     file_names = [i.split('/')[-1] for i in images]
-    real_images = ['../static/img/'+path_mid+i for i in file_names]
+    real_images = ['../static/img/'+path_last+i for i in file_names]
     
     info: dict = {
         'real_images' : real_images

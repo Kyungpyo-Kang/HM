@@ -8,6 +8,7 @@ SECRET_KEY = "django-insecure-!exn(*@^y=oudhnatz@76lha5eu@0(^1-&x2)jpjydh%9$=1=c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 이후 서버 배포시 ".us-west-1.compute.amazonaws.com"를 "서버 주소"로 변경
 ALLOWED_HOSTS = [
     ".us-west-1.compute.amazonaws.com",
     "www.hyundaids.com",
