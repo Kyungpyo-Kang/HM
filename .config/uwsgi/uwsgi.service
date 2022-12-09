@@ -3,7 +3,6 @@ Description=uWSGI service
 After=syslog.target
  
 [Service]
-# 가상환경에서 uwsgi 경로 -i HM.ini 경로
 ExecStart=/home/ubuntu/anaconda3/envs/myvenv/bin/uwsgi -i /srv/HM/.config/uwsgi/HM.ini
  
 Restart=always
