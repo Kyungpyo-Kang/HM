@@ -169,7 +169,7 @@ def delete_history(request):
 def get_images(request):
 
     pattern_category = ['black_white_patterns','figure_patterns','fractal_patterns',
-    'geometric_patterns','hexagon_patterns','line_patterns','patterns','patterns_2','patterns_3']
+    'geometric_patterns','hexagon_patterns','line_patterns','patterns']
 
     nature_category = ['animal_images','animal_skin_images','bee_images','bird_images','butterfly_images',
     'crystal_images','dragonfly_images','eyes_images','flower_images','nature_images','reptile_images',
