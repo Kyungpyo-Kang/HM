@@ -98,7 +98,7 @@ def main(vgg_path, decoder_path, content, style, alpha, interpolation_weights=No
     
     
     try : 
-        content_image = Image.open(content)
+        content_image = Image.open(content).convert('RGB')
     except : 
         content_image = Image.open(urlopen(content)) # url형태로 받는 경우 urlopen을 이용해 이미지 로드
     
