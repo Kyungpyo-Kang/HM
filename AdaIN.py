@@ -93,12 +93,15 @@ def main(vgg_path, decoder_path, content, style, alpha, interpolation_weights=No
     vgg.to(device)
     decoder.to(device)
 
-    content_tf = test_transform(512, True)
-    style_tf = test_transform(512, True)
+    # content_tf = test_transform(512, True)
+    # style_tf = test_transform(512, True)
+
+    content_tf = test_transform((1,4,512,512), True)
+    style_tf = test_transform((1,4,512,512), True)
     
     
     try : 
-        content_image = Image.open(content).convert('RGB')
+        content_image = Image.open(content)
     except : 
         content_image = Image.open(urlopen(content)) # url형태로 받는 경우 urlopen을 이용해 이미지 로드
     
@@ -117,8 +120,10 @@ def main(vgg_path, decoder_path, content, style, alpha, interpolation_weights=No
     content = content.to(device).unsqueeze(0)
 
     with torch.no_grad():
-        output = style_transfer(vgg, decoder, content, style, alpha)
 
+        
+        output = style_transfer(vgg, decoder, content, style, alpha)
+        
     output = output.cpu()
 
 
