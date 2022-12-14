@@ -93,11 +93,9 @@ def main(vgg_path, decoder_path, content, style, alpha, interpolation_weights=No
     vgg.to(device)
     decoder.to(device)
 
-    # content_tf = test_transform(512, True)
-    # style_tf = test_transform(512, True)
+    content_tf = test_transform(512, True)
+    style_tf = test_transform(512, True)
 
-    content_tf = test_transform((1,4,512,512), True)
-    style_tf = test_transform((1,4,512,512), True)
     
     
     try : 
@@ -109,6 +107,10 @@ def main(vgg_path, decoder_path, content, style, alpha, interpolation_weights=No
         style_image = Image.open(style)
     except : 
         style_image = Image.open(urlopen(style))
+
+    content_image = content_image.convert('RGB')
+    style_image = style_image.convert('RGB')
+
 
     content = content_tf(content_image)
     style = style_tf(style_image)
